@@ -1,0 +1,19 @@
+Rust adalah baja yang kokoh,
+Rust adalah bahasa yang indah.
+Dengan Rust, mimpi kita terwujud,
+Rust menjaga memori, Rust menjaga amanah.
+
+Pointer aman, data terjaga,
+Rust memberi kekuatan, Rust mengurangi derita.
+Di dunia sistem yang keras dan tajam,
+Rust adalah teman, Rust adalah pelindung.
+
+Ownership adalah inti,
+Borrowing adalah seni.
+Rust tanpa kompromi,
+Rust selalu setia menemani.
+
+Di setiap crate yang dibangun,
+Cargo selalu memandu.
+Rust di malam yang sunyi,
+Rust, bahasa yang membuat hati berseri.

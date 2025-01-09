@@ -18,6 +18,9 @@ import (
 
 func main() {
 	// Membuat HashMap untuk menyimpan jumlah kemunculan setiap baris.
+	args_len := len(os.Args[1:])
+	fmt.Println(args_len)
+
 	counts := make(map[string]int)
 
 	// Membaca input dari stdin menggunakan scanner
@@ -30,8 +33,6 @@ func main() {
 
 	// Menampilkan hasil dari baris yang memiliki nilai duplikat
 	for line, n := range counts {
-		if n > 1 {
-			fmt.Printf("%d\t%s\n", n, line)
-		}
+		fmt.Printf("%d\t%s\n", n, line)
 	}
 }

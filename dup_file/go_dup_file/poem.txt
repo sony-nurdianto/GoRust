@@ -1,0 +1,19 @@
+Di alam Go, dunia pemrograman,
+Ada bahasa yang ringkas, elegan.
+Dengan sintaks jelas, kode mengalir,
+Membangun aplikasi, impian kita menggapai.
+
+Di tengah kode, kata-kata berulang,
+Menghantui pikiran, membuat bingung.
+Maka hadirlah program, si pencari jeli,
+Menemukan duplikat, menyingkirkan sekeli.
+
+Huruf demi huruf, diurai dan dihitung,
+Kata demi kata, disusun dan disunting.
+Dengan algoritma cermat, ia bekerja keras,
+Mencari kata kembar, tanpa kenal lelah.
+
+Hasilnya pun muncul, kata duplikat terungkap,
+Kode menjadi bersih, efisien dan kompak.
+Go, bahasa yang kuat, membantu kita semua,
+Menulis kode berkualitas, sempurna.

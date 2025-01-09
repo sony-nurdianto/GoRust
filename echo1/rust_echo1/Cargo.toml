@@ -1,0 +1,3 @@
+[workspace]
+members = ["echo1","lib_echo1"]
+resolver = "2"

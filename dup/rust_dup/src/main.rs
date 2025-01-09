@@ -23,16 +23,23 @@ fn main() {
         }
     });
 
-    // for line in input.lock().lines() {
-    //     match line {
-    //         Ok(value) => {
-    //             let count = counts.entry(value).or_insert(0);
-    //             *count += 1;
-    //         }
-    //         Err(_) => continue,
-    //     };
-    // }
-
     // Menampilkan hasil penghitungan
     println!("{:?}", counts);
 }
+
+// for manual looping without iterator
+// fn main() {
+//     let mut counts: HashMap<String, u32> = HashMap::new();
+//
+//     for line in std::io::stdin().lock().lines() {
+//         match line {
+//             Ok(value) => {
+//                 let count = counts.entry(value).or_insert(0);
+//                 *count += 1;
+//             }
+//             Err(_) => continue,
+//         };
+//     }
+//
+//     println!("{:?}", counts);
+// }

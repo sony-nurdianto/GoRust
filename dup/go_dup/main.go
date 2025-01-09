@@ -17,13 +17,18 @@ import (
 // jumlah kemunculannya.
 
 func main() {
+	// Membuat HashMap untuk menyimpan jumlah kemunculan setiap baris.
 	counts := make(map[string]int)
+
+	// Membaca input dari stdin menggunakan scanner
 	input := bufio.NewScanner(os.Stdin)
 
+	// Melakukan iterasi pada setiap baris input, jika input valid maka akan memperbarui nilai pada hashmap
 	for input.Scan() {
 		counts[input.Text()]++
 	}
 
+	// Menampilkan hasil dari baris yang memiliki nilai duplikat
 	for line, n := range counts {
 		if n > 1 {
 			fmt.Printf("%d\t%s\n", n, line)

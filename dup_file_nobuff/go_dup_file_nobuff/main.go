@@ -4,20 +4,28 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"sort"
 	"strings"
 )
 
+type Kv struct {
+	Key   string
+	Value int
+}
+
 func main() {
-	counts := make(map[string]int)
 	args := os.Args[1:]
-	fmt.Println("Find Duplicate Word In " + strings.Join(args, " "))
 
 	for _, filename := range args {
+
+		fmt.Println("Find Duplicate Word In " + filename)
 		data, err := os.ReadFile(filename)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "dup3: %v\n", err)
 			continue
 		}
+
+		counts := make(map[string]int)
 
 		for _, line := range strings.Split(string(data), "\n") {
 			for _, word := range strings.Split(line, " ") {
@@ -26,8 +34,18 @@ func main() {
 			}
 		}
 
+		var sortedCount []Kv
+
 		for k, v := range counts {
-			fmt.Printf("%s: %d\n", k, v)
+			sortedCount = append(sortedCount, Kv{Key: k, Value: v})
+		}
+
+		sort.Slice(sortedCount, func(i, j int) bool {
+			return sortedCount[i].Value > sortedCount[j].Value
+		})
+
+		for _, pair := range sortedCount {
+			fmt.Printf("%s: %d\n", pair.Key, pair.Value)
 		}
 	}
 }

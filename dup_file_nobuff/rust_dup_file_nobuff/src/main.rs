@@ -11,6 +11,7 @@ use std::{fmt, io::Error as IoError, string::FromUtf8Error};
 use lazy_static::lazy_static;
 use rayon::{
     iter::{IntoParallelRefIterator, ParallelIterator},
+    slice::ParallelSliceMut,
     str::ParallelString,
 };
 use regex::{Error as RgxError, Regex};
@@ -75,16 +76,20 @@ fn find_duplicate(path: &Path, counts: &Arc<Mutex<HashMap<String, u32>>>) -> Res
 fn main() {
     let args: Vec<String> = env::args().collect();
     let file: &[String] = &args[1..];
-    let counts = Arc::new(Mutex::new(HashMap::<String, u32>::new()));
 
-    println!("Finding duplicate Word In: {}", file.join(" "));
-    file.par_iter().for_each(|arg| {
+    file.iter().for_each(|arg| {
+        println!("Finding duplicate Word In: {}", arg);
         let path: &Path = Path::new(arg);
+        let counts = Arc::new(Mutex::new(HashMap::<String, u32>::new()));
 
         match find_duplicate(path, &counts) {
             Ok(_) => {
                 let count = counts.lock().unwrap();
-                count.par_iter().for_each(|(k, v)| println!("{}:{}", k, v));
+                let mut sorted_counts: Vec<(&String, &u32)> = count.par_iter().collect();
+                sorted_counts.par_sort_by(|a, b| b.1.cmp(a.1));
+                sorted_counts
+                    .iter()
+                    .for_each(|(k, v)| println!("{}: {}", k, v));
             }
             Err(err) => {
                 eprintln!("Error Processing File {}: {}", arg, err)

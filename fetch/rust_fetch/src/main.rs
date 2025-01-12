@@ -35,11 +35,18 @@ impl From<reqwest::Error> for FetchErr {
 async fn main() -> Result<(), FetchErr> {
     let args: Vec<String> = env::args().collect();
 
-    for url in &args[1..] {
+    for arg in &args[1..] {
+        let mut url = arg.clone();
+
+        if !url.starts_with("http") {
+            url = format!("http://{}", url)
+        }
+
         let mut response = reqwest::get(url).await?;
         let mut out = io::stdout();
 
         while let Some(chunk) = response.chunk().await? {
+            out.write(format!("Response Status: {}\n", response.status()).as_bytes())?;
             out.write_all(&chunk)?;
         }
     }

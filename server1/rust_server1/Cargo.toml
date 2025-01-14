@@ -1,0 +1,12 @@
+[package]
+name = "rust_server1"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+http-body-util = "0.1.2"
+hyper = { version = "1.5.2", features = ["full"] }
+hyper-util = { version = "0.1.10", features = ["full"] }
+image = "0.25.5"
+rand = "0.8.5"
+tokio = { version = "1.43.0", features = ["full"] }

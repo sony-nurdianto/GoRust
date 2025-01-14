@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"go_server1/lissajous"
 	"log"
 	"net/http"
 )
@@ -12,5 +12,6 @@ func main() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "URL.Path = %q\n", r.URL.Path)
+	lissajous.Lissajous(w)
+	// fmt.Fprintf(w, "URL.Path = %q\n", r.URL.Path)
 }

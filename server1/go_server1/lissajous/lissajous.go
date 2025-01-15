@@ -1,12 +1,14 @@
 package lissajous
 
 import (
+	"fmt"
 	"image"
 	"image/color"
 	"image/gif"
 	"io"
 	"math"
 	"math/rand"
+	"strconv"
 )
 
 var palette = []color.Color{
@@ -31,14 +33,22 @@ const (
 	cyanIndex   = 7
 )
 
-func Lissajous(out io.Writer) {
+func Lissajous(out io.Writer, c *string) error {
 	const (
-		cycles  = 5
 		res     = 0.0001
 		size    = 100
 		nframes = 64
 		delay   = 8
 	)
+
+	var cycles float64
+
+	number, err := strconv.ParseFloat(*c, 64)
+	if err != nil {
+		return fmt.Errorf("%v", err)
+	}
+
+	cycles = number
 
 	freq := rand.Float64() * 3.0 // relative frequency of y oscillator
 	anim := gif.GIF{LoopCount: nframes}
@@ -74,4 +84,5 @@ func Lissajous(out io.Writer) {
 	}
 
 	gif.EncodeAll(out, &anim)
+	return nil
 }

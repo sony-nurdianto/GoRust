@@ -1,11 +1,6 @@
-fn raaa(n: i32) -> i32 {
-    if n >= 10 {
-        return n;
-    }
-
-    raaa(n + 1)
-}
-
 fn main() {
-    println!("{}", raaa(0));
+    let s = String::from("Something new");
+    let s = s.replace("S", "X");
+
+    println!("{}", s);
 }

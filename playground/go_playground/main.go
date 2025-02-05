@@ -2,17 +2,24 @@ package main
 
 import "fmt"
 
-type Currency int
+func k(list []string) string {
+	return fmt.Sprintf("%q", list)
+}
 
-const (
-	USD Currency = iota
-	EUR
-	GBP
-	RMB
-)
+type Point struct {
+	X, Y int
+}
 
 func main() {
-	symbol := [...]string{USD: "$", EUR: "€", GBP: "£", RMB: "¥"}
+	table := make(map[string]int)
 
-	fmt.Println(RMB, symbol[RMB]) // "3 ¥"
+	table["one"] = 1
+	table["two"] = 2
+	table["three"] = 3
+
+	s := k([]string{"one", "two", "three"})
+	fmt.Println(s)
+
+	point := Point{1, 2}
+	fmt.Println(point)
 }

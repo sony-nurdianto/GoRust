@@ -1,4 +1,4 @@
-package main
+package eval
 
 import (
 	"fmt"
@@ -74,7 +74,4 @@ func (c call) Eval(env Env) float64 {
 		return math.Sqrt(c.args[0].Eval(env))
 	}
 	panic(fmt.Sprintf("unsupported function call: %s", c.fn))
-}
-
-func main() {
 }

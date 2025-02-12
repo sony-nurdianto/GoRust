@@ -1,18 +1,10 @@
 package main
 
-import "fmt"
-
-func sum(n int) int {
-	fmt.Println(n)
-	if n > 10 {
-		return n
-	}
-
-	return sum(n + 1)
-}
+import (
+	"reflect"
+)
 
 func main() {
-	n := 1
-	s := sum(n)
-	fmt.Printf("This is Rekursif Result sum(%d) : %d\n", n, s)
+	i := reflect.ValueOf(3)
+	i.Set(reflect.ValueOf(&i).Elem())
 }

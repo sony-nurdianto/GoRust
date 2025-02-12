@@ -1,6 +1,11 @@
 package main
 
-import "github.com/sony-nurdianto/GoRust/ch12/display"
+import (
+	"fmt"
+
+	"github.com/sony-nurdianto/GoRust/ch12/display"
+	"github.com/sony-nurdianto/GoRust/ch12/sexpr"
+)
 
 type Movie struct {
 	Title, Subtitle string
@@ -40,4 +45,11 @@ func main() {
 
 	display.Display("i", i)
 	display.Display("&i", &i)
+
+	data, err := sexpr.Marshal(strangelove)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Marshal Output:\n", string(data))
+	}
 }
